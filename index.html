@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Gavin's Homepage</title>
+        <link rel="icon" type="image/x-icon" href="WebPageImages/MinecraftHead.png">
+        <style>
+            body {
+                background: rgb(0, 89, 89);
+                background-image:
+                linear-gradient(45deg, #006464 25%, transparent 25%), 
+                linear-gradient(-45deg, #006464 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #006464 75%),
+                linear-gradient(-45deg, transparent 75%, #006464 75%);
+                background-size:100px 100px;    
+                background-position:0 0, 100px 0, 100px -100px, 0px 100px;
+                color: rgb(255, 255, 255);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+              max-width: 800px;
+                margin: auto;
+            }
+         
+            /* navigation menu */
+            nav {
+                background: rgb(0, 0, 179);
+               margin: 0 auto;
+               margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 20px;
+            }
+            h1 {
+                display: flex;
+                align-items: center;
+                color: white;
+                flex: 1;
+                margin: 0;
+            }
+            #nav-ul {
+                list-style-image: none;
+            }
+            .nav-li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            .nav-a {
+            color:#ffff00;
+          }
+          #location {
+            color:rgba(255, 255, 0, 0.75);
+            font-style:oblique;
+          }
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+         
+            /* main container area beneath menu */
+            main {
+                background: rgb(25, 25, 25);
+                display: flex;
+                border-radius: 30px;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar-img {
+                width: 200px;
+                margin: 10px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            #interests {
+                border: 4px silver ridge;
+                padding: 8px;
+                border-radius: 20px;
+            }
+            #name {
+                margin:9px;
+            }
+            h2, h3, p {
+                margin: 10px;
+            }
+         </style>
+    </head>
+    <body>
+        <div id="all-contents">
+            <!-- All content goes here -->
+            <nav>
+                <h1>Gavin's Website</h1>
+                <ul id="nav-ul">
+                    <li class="nav-li">
+                        <a class="nav-a" id="location" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-li">
+                        <a class="nav-a" href="portfolio.html">Portfolio</a>
+                      </li>
+                      <li class="nav-li">
+                        <a class="nav-a" href="contacts.html">Contact</a>
+                      </li>
+                </ul>
+            </nav>
+            <main>
+                <!-- Sidebar section -->
+                <div class="sidebar">
+                    <img class="sidebar-img" src="WebPageImages/MeIRL.png">
+                </div>
+                <!-- Content Section-->
+                <div class="content">
+                    <h1 id="name">Gavin Herdt</h1>
+                    <p>Student at Mandeville High School.</p>
+                    <!-- Interests section -->
+                    <div id="interests">
+                        <h3>Interests:</h3>
+                        <ul>
+                            <li>Videogames</li>
+                            <li>Escape Rooms</li>
+                            <li>Swimming</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

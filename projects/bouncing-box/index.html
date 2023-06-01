@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="image/x-icon" href="https://github.com/GavinHerdt9/GavinHerdt9.github.io/blob/923618e48fd836e533c19eabe4f35db323455814/WebPageImages/MinecraftHead.png?raw=true">
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
+	<style>
+		.box {
+			width: 70px;
+			height: 70px;
+			background-color: #006464;
+			color: white;
+			font-size: 300%;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 100px;
+			left: 0px;  /* <--- Change me! */
+		}
+		.board{
+			height: 100vh;
+			background: rgb(25, 25, 25);
+		}
+		.misclick{
+			color: #ffffff;
+			font-size: xx-large;
+			text-align: right;
+			padding: 10px;
+			margin: 10px;
+		}
+		.score{
+			color: #ffffff;
+			font-size: xx-large;
+			text-align: right;
+			padding: 10px;
+			margin: 10px;
+		}
+	</style>
+	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<div class="box">0</div>
+	<div class="score">Score: 0</div>
+	<div class="misclick">Misclicks: 0/10</div>
+
+	<script>
+		(function(){
+			'use strict'
+			/* global jQuery */
+
+			//////////////////////////////////////////////////////////////////
+			/////////////////// SETUP DO NOT DELETE //////////////////////////
+			//////////////////////////////////////////////////////////////////
+			
+			var box = jQuery('.box');	// reference to the HTML .box element
+			var board = jQuery('.board');	// reference to the HTML .board element
+			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+			var boardHeight = jQuery(window).height();
+			var randNumX = Math.random() * boardWidth;
+			var randNumY = Math.random() * boardHeight;
+			var randRed = Math.random() * 255;
+			var randGreen = Math.random() * 255;
+			var randBlue = Math.random() * 255;
+			var colorStr = " rgb(" + randRed + ", " + randGreen + ", " + randBlue + ")";
+			box.css('background-color', colorStr);
+			var misclicks = 0;
+			var misclick = jQuery('.misclick');
+			var score = jQuery('.score');
+
+			// Every 50 milliseconds, call the update Function (see below)
+			var interval = setInterval(update, 50);
+
+			
+			// Every time the box is clicked, call the handleBoxClick Function (see below)
+			box.on('click', handleBoxClick);
+			board.on('click', handleBoardClick);
+
+			// moves the Box to a new position on the screen along the X-Axis
+			function moveBoxTo(newPositionX, newPositionY) {
+				box.css("left", newPositionX);
+				box.css("top", newPositionY);
+			}
+
+			// changes the text displayed on the Box
+			function changeBoxText(newText) {
+				box.text(newText);
+			}
+			function changeMisclickText(newText) {
+				misclick.text(newText);
+			}
+			function changeScoreText(newText) {
+				score.text(newText);
+			}
+
+			//////////////////////////////////////////////////////////////////
+			/////////////////// YOUR CODE BELOW HERE /////////////////////////
+			//////////////////////////////////////////////////////////////////
+			
+			// TODO 2 - Variable declarations 
+			var positionX = 1;
+			var points = 0;
+			var speed = 10;
+			var positionY = 1;
+			var speedY = 10;
+			/* 
+			This Function will be called 20 times/second. Each time it is called,
+			it should move the Box to a new location. If the box drifts off the screen
+			turn it around! 
+			*/
+			function update() {
+				//increase value of positionX by 10
+				positionX += speed;
+				positionY += speedY
+				moveBoxTo(positionX, positionY);
+				if (positionY > boardHeight) {
+					speedY = -speedY;
+				}
+				else if (positionY <= 0) {
+					speedY = -speedY;
+				}
+
+				if (positionX > boardWidth) {
+					speed = -speed;
+				}
+				else if (positionX <= 0) {
+					speed = -speed;
+				}
+			};
+
+			/* 
+			This Function will be called each time the box is clicked. Each time it is called,
+			it should increase the points total, increase the speed, and move the box to
+			the left side of the screen.
+			*/
+			function handleBoxClick() {
+				randNumX = Math.random() * boardWidth;
+				randNumY = Math.random() * boardHeight;
+				positionX = randNumX;
+				points += 1;
+				changeBoxText(points);
+				if (speed < 0){
+					speed -= 3;
+				}
+				else {
+					speed += 3;
+				}
+				if (speedY < 0){
+					speedY -= 0;
+				}
+				else {
+					speedY += 3;
+				}
+				positionY = randNumY;
+				var randRed = Math.random() * 255;
+				var randGreen = Math.random() * 255;
+				var randBlue = Math.random() * 255;
+				var colorStr = " rgb(" + randRed + ", " + randGreen + ", " + randBlue + ")";
+				box.css('background-color', colorStr);
+				misclicks -= 1;
+			};
+			function handleBoardClick(){
+				misclicks += 1;
+				changeMisclickText("Misclicks: " + misclicks + "/10")
+				changeScoreText("Score: " + points)
+				if (misclicks === 10) {
+					endGame();
+				}
+			}
+			function endGame() {
+				clearInterval(interval);
+				alert("Game over!\nFinal Score: " + points + "\n\nRefresh to play again!")
+				misclicks = NaN;
+				points = NaN;
+			}
+		})();
+	</script>
+</body>
+</html>
