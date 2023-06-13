@@ -13,13 +13,13 @@ const KEY = {
   D: 68
 }
 
-var posX = 100;
-var posY = 100;
+var posX = 290;
+var posY = 290;
 var speedX = 0;
 var speedY = 0;
 
-var posX2 = 290;
-var posY2 = 290;
+var posX2 = 100;
+var posY2 = 100;
 var speedX2 = 0;
 var speedY2 = 0;
 
