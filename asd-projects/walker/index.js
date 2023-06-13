@@ -13,15 +13,18 @@ const KEY = {
   D: 68
 }
 
-var posX = 0;
-var posY = 0;
+var posX = 100;
+var posY = 100;
 var speedX = 0;
 var speedY = 0;
 
-var posX2 = 0;
-var posY2 = 0;
+var posX2 = 290;
+var posY2 = 290;
 var speedX2 = 0;
 var speedY2 = 0;
+
+var height = 50
+var width = 50
   
 function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
@@ -32,6 +35,8 @@ function runProgram(){
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
+  var square1 = {}
+  var square2 = {}
   // Game Item Objects
 
 
@@ -39,6 +44,16 @@ function runProgram(){
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
+
+  var tagBeginner = Math.random()
+  if (tagBeginner < .5) {
+    $("#walker").attr("class", "tagged")
+    $("#walker2").attr("class", "not-tagged")
+  }
+  else if (tagBeginner >= .5){
+    $("#walker2").attr("class", "tagged")
+    $("#walker").attr("class", "not-tagged")
+  }
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -75,6 +90,44 @@ function runProgram(){
     }
     if (posY2 > 390) {
       posY2 = 0
+    }
+
+    $(".tagged").css("background", "red")
+    $(".not-tagged").css("background", "lime")
+    $("#tag-indicator").appendTo(".tagged")
+
+    square1.left = posX
+    square1.right = posX + width
+    square1.top = posY
+    square1.bottom = posY + height
+    square2.left = posX2
+    square2.right = posX2 + width
+    square2.top = posY2
+    square2.bottom = posY2 + height
+
+    if (((square1.left < square2.right) && (square1.right > square2.left)) && ((square1.top < square2.bottom) && (square1.bottom > square2.top))) {
+      $(".not-tagged").attr("class", "tagging")
+      $(".not-tagged").removeAttr("class", "not-tagged")
+      $(".tagged").attr("class", "not-tagged")
+      $(".tagged").removeAttr("class", "tagged")
+      $(".tagging").attr("class", "tagged")
+      $(".tagging").removeAttr("class", "tagging")
+      if(square1.left < square2.left) {
+        posX -= 50
+        posX2 += 50
+      }
+      else if(square1.right > square2.right) {
+        posX += 50
+        posX2 -= 50
+      }
+      if(square1.top < square2.top) {
+        posY -= 50
+        posY2 += 50
+      }
+      else if(square1.bottom > square2.bottom) {
+        posY += 50
+        posY2 -= 50
+      }
     }
   }
   
