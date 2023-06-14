@@ -22,8 +22,6 @@ function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
 
   applyFilter()
-  applyAndRender()
-
   
 
   // do not change the below line of code
