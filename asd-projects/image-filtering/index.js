@@ -39,7 +39,7 @@ function applyFilter() {
     for (var j = 0; j < image[i].length; j++) {
       var rgbString = image[i][j]
       var rgbNumbers = rgbStringToArray(rgbString)
-      rgbNumbers[0] = 255
+      rgbNumbers[RED] = 255
       rgbString = rgbArrayToString(rgbNumbers)
       image[i][j] = rgbString
     }
