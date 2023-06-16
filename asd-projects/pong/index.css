@@ -1,0 +1,55 @@
+body {
+    background-color: darkgreen;
+    font-family: 'Silkscreen';
+  }
+  
+  #board {
+    width: 440px;
+    height: 440px;
+    border: 1px solid white;
+    background-color: black;
+    position: relative;
+  }
+  
+  #p1Paddle {
+    background-color: white;
+    border-radius: 5px;
+    width: 10px;
+    height: 100px;
+    position: absolute;
+    left: 10px;
+    top: 170px;
+  }
+
+  #p2Paddle {
+    background-color: white;
+    border-radius: 5px;
+    width: 10px;
+    height: 100px;
+    position: absolute;
+    left: 420px;
+    top: 170px;
+  }
+  #ball {
+    background-color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 212.5px;
+    top: 212.5px;
+  }
+
+  #p1Score {
+    color: white;
+    position: absolute;
+    left: 100px;
+    top: 10px;
+  }
+
+  #p2Score {
+    color: white;
+    position: absolute;
+    left: 320px;
+    top: 10px;
+  }
