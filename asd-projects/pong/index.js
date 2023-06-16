@@ -138,9 +138,11 @@ function runProgram(){
 
     if (doCollide(p1PaddleObj, ballObj)) {
         ballObj.speedX *= -1
+        ballObj.speedX += .25
     }
     if (doCollide(p2PaddleObj, ballObj)) {
         ballObj.speedX *= -1
+        ballObj.speedX -= .25
     }
 
     $(ballObj.id).css("top", ballObj.y)
@@ -171,8 +173,8 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   function startBall() {
-    ballObj.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    ballObj.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ballObj.speedX = (Math.random() * 0 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ballObj.speedY = (Math.random() * 0 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
 
   function doCollide(paddle, ball) {
