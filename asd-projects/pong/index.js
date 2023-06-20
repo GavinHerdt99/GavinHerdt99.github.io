@@ -47,37 +47,40 @@ function runProgram(){
 
   var ballObj = gameItem('#ball')
 
+  var origBallTop = parseFloat($('#ball').css("top"))
+  var origBallLeft = parseFloat($('#ball').css("left"))
+
   //Key pressing functionality
   $(document).on("keydown", handleKeyDown)
   $(document).on("keyup", handleKeyUp)
 
   function handleKeyDown(event) {
     if (event.which === KEYS.W) {
-        p1PaddleObj.speedY = -5
+        p1PaddleObj.speedY = -10
     }
     if (event.which === KEYS.S) {
-        p1PaddleObj.speedY = 5
+        p1PaddleObj.speedY = 10
     }
     if (event.which === KEYS.UP) {
-        p2PaddleObj.speedY = -5
+        p2PaddleObj.speedY = -10
     }
     if (event.which === KEYS.DOWN) {
-        p2PaddleObj.speedY = 5
+        p2PaddleObj.speedY = 10
     }
   }
 
   function handleKeyUp(event) {
     if (event.which === KEYS.W) {
-        p1PaddleObj.speedY += 5
+        p1PaddleObj.speedY += 10
     }
     if (event.which === KEYS.S) {
-        p1PaddleObj.speedY -= 5
+        p1PaddleObj.speedY -= 10
     }
     if (event.which === KEYS.UP) {
-        p2PaddleObj.speedY += 5
+        p2PaddleObj.speedY += 10
     }
     if (event.which === KEYS.DOWN) {
-        p2PaddleObj.speedY -= 5
+        p2PaddleObj.speedY -= 10
     }
   }
 
@@ -125,24 +128,24 @@ function runProgram(){
 
     if (ballObj.x < 0) {
         p2ScoreVar += 1
-        ballObj.x = 212.5
-        ballObj.y = 212.5
+        ballObj.x = origBallLeft
+        ballObj.y = origBallTop
         startBall()
     }
     else if (ballObj.x > BOARD_WIDTH - ballObj.width) {
         p1ScoreVar += 1
-        ballObj.x = 212.5
-        ballObj.y = 212.5
+        ballObj.x = origBallLeft
+        ballObj.y = origBallTop
         startBall()
     }
 
     if (doCollide(p1PaddleObj, ballObj)) {
         ballObj.speedX *= -1
-        ballObj.speedX += .25
+        ballObj.speedX += .5
     }
     if (doCollide(p2PaddleObj, ballObj)) {
         ballObj.speedX *= -1
-        ballObj.speedX -= .25
+        ballObj.speedX -= .5
     }
 
     $(ballObj.id).css("top", ballObj.y)
@@ -173,8 +176,8 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   function startBall() {
-    ballObj.speedX = (Math.random() * 0 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    ballObj.speedY = (Math.random() * 0 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ballObj.speedX = (Math.random() * 0 + 5) * (Math.random() > 0.5 ? -1 : 1);
+    ballObj.speedY = (Math.random() * 0 + 5) * (Math.random() > 0.5 ? -1 : 1);
   }
 
   function doCollide(paddle, ball) {
