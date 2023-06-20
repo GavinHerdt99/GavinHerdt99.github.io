@@ -17,10 +17,14 @@
 			position: absolute;
 			top: 100px;
 			left: 0px;  /* <--- Change me! */
+			cursor: pointer;
+			user-select: none;
+
 		}
 		.board{
 			height: 100vh;
 			background: rgb(25, 25, 25);
+			user-select: none;
 		}
 		.misclick{
 			color: #ffffff;
@@ -71,7 +75,7 @@
 			var score = jQuery('.score');
 
 			// Every 50 milliseconds, call the update Function (see below)
-			var interval = setInterval(update, 50);
+			var interval = setInterval(update, 25);
 
 			
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
@@ -102,9 +106,9 @@
 			// TODO 2 - Variable declarations 
 			var positionX = 1;
 			var points = 0;
-			var speed = 10;
+			var speed = 5;
 			var positionY = 1;
-			var speedY = 10;
+			var speedY = 5;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
