@@ -11,6 +11,7 @@
     border: 2px darkgray double;
     background: lightgray;
     font-size: 30px;
+    cursor: pointer;
 }
 #sortContainer {
     display: table;
